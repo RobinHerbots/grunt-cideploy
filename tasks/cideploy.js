@@ -16,8 +16,8 @@ module.exports = function (grunt) {
         var options = this.options({
             before: function (grunt, options) {
             },
-            msbuild: [],
-            buildtasks: ["nugetrestore", "msbuild"],
+            msbuild: null,
+            buildtasks: [],
             after: function (grunt, options) {
             },
             origin: "",
@@ -52,11 +52,10 @@ module.exports = function (grunt) {
 
             options.before(grunt, options);
 
-            if (options.buildtasks.length > 0) {
+            if (options.msbuild !== null) {
                 _.merge(grunt.config.data, {
                     msbuild: options.msbuild
                 });
-                console.log(JSON.stringify(grunt.config("msbuild")));
             }
             grunt.task.run(options.buildtasks);
 

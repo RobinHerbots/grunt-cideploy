@@ -28,7 +28,7 @@ grunt.initConfig({
       target: {
         options: {
              before: function (grunt, options) { },
-             msbuild: [],
+             msbuild: {},
              buildtasks: ["nugetrestore", "msbuild"],
              after: function (grunt, options) { },
              origin: "",
