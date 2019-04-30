@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c36141e4-cf54-4c3a-988e-096d9bfcd374" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasks/cideploy.js" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/cideploy.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -40,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tasks/cideploy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="148">
+              <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -215,18 +214,18 @@
       <workItem from="1554884567987" duration="605000" />
       <workItem from="1555069983370" duration="6512000" />
       <workItem from="1556004340937" duration="2043000" />
-      <workItem from="1556634566068" duration="1031000" />
+      <workItem from="1556634566068" duration="1324000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25912000" />
+    <option name="totallyTimeSpent" value="26205000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49298596" visible="true" weight="0.24904943" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49298596" visible="true" weight="0.24904943" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Grunt " order="3" sideWeight="0.50701404" side_tool="true" visible="true" weight="0.24904943" />
@@ -241,7 +240,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32839838" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32839838" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -314,8 +313,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tasks/cideploy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="148">
+          <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

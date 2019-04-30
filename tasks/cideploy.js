@@ -12,9 +12,9 @@
 var _ = require("lodash");
 
 module.exports = function (grunt) {
-    if (grunt.config.data.ci_deploy.msbuild !== null) {
+    if (grunt.config.data.ci_deploy.options.msbuild !== null) {
         _.merge(grunt.config.data, {
-            msbuild: grunt.config.data.ci_deploy.msbuild
+            msbuild: grunt.config.data.ci_deploy.options.msbuild
         });
     }
 
