@@ -32,6 +32,12 @@ module.exports = function (grunt) {
             pkg: grunt.file.readJSON("package.json")
         });
 
+        if (options.msbuild !== null) {
+            _.merge(grunt.config.data, {
+                msbuild: options.msbuild
+            });
+        }
+
         function startDeploy(tag) {
             _.merge(grunt.config.data, {
                 gitcheckout: {
@@ -52,11 +58,6 @@ module.exports = function (grunt) {
 
             options.before(grunt, options);
 
-            if (options.msbuild !== null) {
-                _.merge(grunt.config.data, {
-                    msbuild: options.msbuild
-                });
-            }
             grunt.task.run(options.buildtasks);
 
             options.after(grunt, options);
