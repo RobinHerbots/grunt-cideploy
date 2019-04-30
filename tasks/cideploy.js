@@ -12,7 +12,13 @@
 var _ = require("lodash");
 
 module.exports = function (grunt) {
-    grunt.registerMultiTask('ci_deploy', "Gitlab ci deploy", function () {
+    if (grunt.config.data.ci_deploy.msbuild !== null) {
+        _.merge(grunt.config.data, {
+            msbuild: grunt.config.data.ci_deploy.msbuild
+        });
+    }
+
+    grunt.registerTask('ci_deploy', "Gitlab ci deploy", function () {
         var options = this.options({
             before: function (grunt, options) {
             },
@@ -31,12 +37,6 @@ module.exports = function (grunt) {
         _.merge(grunt.config.data, {
             pkg: grunt.file.readJSON("package.json")
         });
-
-        if (options.msbuild !== null) {
-            _.merge(grunt.config.data, {
-                msbuild: options.msbuild
-            });
-        }
 
         function startDeploy(tag) {
             _.merge(grunt.config.data, {

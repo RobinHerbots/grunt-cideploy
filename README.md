@@ -25,7 +25,6 @@ In your project's Gruntfile, add a section named `cideploy` to the data object p
 ```js
 grunt.initConfig({
   ci_deploy: {
-      target: {
         options: {
              before: function (grunt, options) { },
              msbuild: {},
@@ -38,6 +37,5 @@ grunt.initConfig({
              Application_x0020_NameId: 12,
              Title: 'Title'
         }
-      }
   });
 ```
