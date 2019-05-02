@@ -29,8 +29,10 @@ grunt.initConfig({
              before: function (grunt, options) { },
              msbuild: {},
              buildtasks: ["nugetrestore", "msbuild"],
+             testtasks: ["eslint"],
              after: function (grunt, options) { },
              origin: "",
+             notifyInSharePoint: false,
              username: grunt.option("username"),
              password: grunt.option("password"),
              Project_x0020_NameId: 1,
@@ -39,3 +41,120 @@ grunt.initConfig({
         }
   });
 ```
+
+### Options
+#### before
+Default: function (grunt, options) { }
+
+This is a callback which is called before the deployment task is run.  
+In here you can stop the apppool on IIS for example.
+
+```
+   before: function (grunt, options) {
+                        generateConfig();
+                        grunt.task.run("StopWebAppPool");
+                        grunt.config('msbuild.target.options.buildParameters.DeployOnBuild', true);
+
+                        console.log(JSON.stringify(grunt.config("msbuild")));
+                    },
+```
+
+#### msbuild
+Default: null
+
+This is the msbuild definition.  For more information see https://www.npmjs.com/package/grunt-msbuild
+
+```
+  msbuild: {
+                        project: {
+                            src: ['src/project/project.csproj'],
+                            options: {
+                                projectConfiguration: 'Release',
+                                targets: ['Clean', 'Rebuild'],
+                                buildParameters: {
+                                    OutputPath: process.cwd() + sep + "build" + sep + "service",
+                                    WarningLevel: 2,
+                                    DeployOnBuild: grunt.option('deploy') || false,
+                                    PublishProfile: grunt.option('profile') || "Staging",
+                                    Password: grunt.option('password') || credentials.msbuild_deploy.password,
+                                    PackageVersion: '<%= pkg.version %>',
+                                    FileVersion: '<%= pkg.version %>',
+                                    Version: '<%= pkg.version %>',
+                                    AssemblyVersion: '<%= pkg.version %>'
+                                },
+                                verbosity: 'minimal'
+                            }
+                        }
+            }
+```
+
+#### buildtasks
+Default: []
+
+Define the tasks to execute on build/deploy
+
+```
+buildtasks: ["clean", "nugetrestore", "msbuild"],
+```
+
+
+#### testtasks
+Default: []
+
+Define the tasks to execute on test
+
+```
+buildtasks: ["clean", "nugetrestore", "msbuild"],
+```
+
+#### after
+Default: function (grunt, options) { }
+
+This is a callback which is called before the deployment task is run.  
+In here you can start the apppool on IIS for example.
+
+```
+  after: function (grunt, options) {
+                        grunt.task.run("StartWebAppPool");
+                    },
+```
+
+#### origin
+Default: ""
+
+This is the project remote git url.  
+This is needed to allow the gitlabrunner to commit changes to gitlab.
+
+```
+ origin: "https://gitlab.com/project.git",
+```
+
+#### notifyInSharePoint
+Default: false
+
+Notify the publish in SharePoint.
+
+#### username
+Default: grunt.option("username")
+
+See https://www.npmjs.com/package/grunt-sharepoint-list
+ 
+#### password
+Default: grunt.option("password")
+
+See https://www.npmjs.com/package/grunt-sharepoint-list
+
+#### Project_x0020_NameId
+Default: 1
+
+See https://www.npmjs.com/package/grunt-sharepoint-list
+
+#### Application_x0020_NameId
+Default: 12
+
+See https://www.npmjs.com/package/grunt-sharepoint-list
+
+#### Title
+Default: "Title"
+
+See https://www.npmjs.com/package/grunt-sharepoint-list
