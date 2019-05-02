@@ -18,9 +18,9 @@ module.exports = function (grunt) {
 				files: ["package.json"],
 				commitFiles: ["-a"],
 				updateConfigs: ["pkg"],
-				commit: true,
+				commit: false,
 				createTag: false,
-				push: true,
+				push: false,
 				pushTo: "origin"
 			}
 		},
