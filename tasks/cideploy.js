@@ -18,22 +18,17 @@ module.exports = function (grunt) {
 		});
 	}
 
-	grunt.registerTask("ci_build", "Gitlab ci build", function () {
-		var options = this.options({
-			buildtasks: []
+	if (grunt.config.data.ci_deploy && grunt.config.data.ci_deploy.options.buildtasks !== null) {
+		grunt.registerTask("ci_build", "Gitlab ci build", function () {
+			grunt.task.run(grunt.config.data.ci_deploy.options.buildtasks);
 		});
+	}
 
-		grunt.task.run(options.buildtasks);
-	});
-
-	grunt.registerTask("ci_test", "Gitlab ci test", function () {
-		var options = this.options({
-			testtasks: []
+	if (grunt.config.data.ci_deploy && grunt.config.data.ci_deploy.options.testtasks !== null) {
+		grunt.registerTask("ci_test", "Gitlab ci test", function () {
+			grunt.task.run(grunt.config.data.ci_deploy.options.testtasks);
 		});
-
-		grunt.task.run(options.testtasks);
-	});
-
+	}
 	grunt.registerTask("ci_deploy", "Gitlab ci deploy", function () {
 		var options = this.options({
 			before: function (grunt, options) {

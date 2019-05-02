@@ -1,7 +1,7 @@
 {
   "name": "grunt-cideploy",
   "description": "Reynaers Deployment Task",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "",
   "author": {
     "name": "Robin Herbots",
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "grunt": "^1.0.4",
+    "grunt-bump": "^0.8.0",
     "grunt-contrib-jshint": "^2.1.0",
     "load-grunt-tasks": "^4.0.0",
     "grunt-available-tasks": "git://github.com/RobinHerbots/grunt-available-tasks.git"
