@@ -11,13 +11,7 @@
 
 var _ = require("lodash");
 
-module.exports = function (grunt) {
-	if (grunt.config.data.ci_deploy && grunt.config.data.ci_deploy.options.msbuild !== null) {
-		_.merge(grunt.config.data, {
-			msbuild: grunt.config.data.ci_deploy.options.msbuild
-		});
-	}
-
+function spawnTasks(grunt) {
 	if (grunt.config.data.ci_deploy && grunt.config.data.ci_deploy.options.buildtasks !== null) {
 		grunt.registerTask("ci_build", "Gitlab ci build", function () {
 			grunt.task.run(grunt.config.data.ci_deploy.options.buildtasks);
@@ -29,7 +23,20 @@ module.exports = function (grunt) {
 			grunt.task.run(grunt.config.data.ci_deploy.options.testtasks);
 		});
 	}
+}
+
+module.exports = function (grunt) {
+	if (grunt.config.data.ci_deploy && grunt.config.data.ci_deploy.options.msbuild !== null) {
+		_.merge(grunt.config.data, {
+			msbuild: grunt.config.data.ci_deploy.options.msbuild
+		});
+	}
+
+	spawnTasks(grunt);
+
 	grunt.registerTask("ci_deploy", "Gitlab ci deploy", function () {
+		//this is needed to update reconfiguration before starting the deploy
+		spawnTasks(grunt);
 		var options = this.options({
 			before: function (grunt, options) {
 			},
