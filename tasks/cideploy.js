@@ -35,8 +35,6 @@ module.exports = function (grunt) {
 	spawnTasks(grunt);
 
 	grunt.registerTask("ci_deploy", "Gitlab ci deploy", function () {
-		//this is needed to update reconfiguration before starting the deploy
-		spawnTasks(grunt);
 		var options = this.options({
 			before: function (grunt, options) {
 			},
@@ -77,7 +75,8 @@ module.exports = function (grunt) {
 			grunt.option("totag", tag);
 
 			options.before(grunt, options);
-
+			//this is needed to update reconfiguration before starting the deploy
+			spawnTasks(grunt);
 			grunt.task.run(options.buildtasks);
 
 			options.after(grunt, options);
