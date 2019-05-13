@@ -25,13 +25,16 @@ function spawnTasks(grunt) {
 	}
 }
 
-module.exports = function (grunt) {
+function reconfigureSpawnTasks(grunt) {
 	if (grunt.config.data.ci_deploy && grunt.config.data.ci_deploy.options.msbuild !== null) {
 		_.merge(grunt.config.data, {
 			msbuild: grunt.config.data.ci_deploy.options.msbuild
 		});
 	}
+}
 
+module.exports = function (grunt) {
+	reconfigureSpawnTasks(grunt);
 	spawnTasks(grunt);
 
 	grunt.registerTask("ci_deploy", "Gitlab ci deploy", function () {
@@ -75,8 +78,7 @@ module.exports = function (grunt) {
 			grunt.option("totag", tag);
 
 			options.before(grunt, options);
-			//this is needed to update reconfiguration before starting the deploy
-			spawnTasks(grunt);
+			reconfigureSpawnTasks(grunt);
 			grunt.task.run(options.buildtasks);
 
 			options.after(grunt, options);
