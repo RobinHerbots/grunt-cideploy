@@ -51,6 +51,7 @@ module.exports = function (grunt) {
 			},
 			origin: "",
 			notifyInSharePoint: false,
+			removeTagAfterDeploy: false,
 			username: grunt.option("username"),
 			password: grunt.option("password"),
 			Project_x0020_NameId: 1,
@@ -97,46 +98,6 @@ module.exports = function (grunt) {
 				}
 			});
 			grunt.task.run("gitcheckout:privMaster");
-
-			if (grunt.option("profile") === "Staging") {
-				_.merge(grunt.config.data, {
-					gitremote: {
-						priv: {
-							options: {
-								seturl: {
-									name: "origin",
-									url: options.origin
-								}
-							}
-						}
-					}
-				});
-
-				grunt.task.run("gitremote:priv");
-
-				_.merge(grunt.config.data, {
-					gitpush: {
-						priv: {
-							options: {
-								branch: ":" + tag
-							}
-						}
-					}
-				});
-				grunt.task.run("gitpush:priv");
-
-				_.merge(grunt.config.data, {
-					gittag: {
-						priv: {
-							options: {
-								tag: tag,
-								remove: true
-							}
-						}
-					}
-				});
-				grunt.task.run("gittag:priv");
-			}
 			if (options.notifyInSharePoint) {
 				grunt.registerTask("PSP", "Publish release info on sharepoint", function () {
 					function generateReleaseInfo() {
@@ -267,6 +228,46 @@ module.exports = function (grunt) {
 				});
 				grunt.task.run("PSP");
 			}
+			if (options.removeTagAfterDeploy) {
+				_.merge(grunt.config.data, {
+					gitremote: {
+						priv: {
+							options: {
+								seturl: {
+									name: "origin",
+									url: options.origin
+								}
+							}
+						}
+					}
+				});
+
+				grunt.task.run("gitremote:priv");
+
+				_.merge(grunt.config.data, {
+					gitpush: {
+						priv: {
+							options: {
+								branch: ":" + tag
+							}
+						}
+					}
+				});
+				grunt.task.run("gitpush:priv");
+
+				_.merge(grunt.config.data, {
+					gittag: {
+						priv: {
+							options: {
+								tag: tag,
+								remove: true
+							}
+						}
+					}
+				});
+				grunt.task.run("gittag:priv");
+			}
+
 		}
 
 		//determine tag

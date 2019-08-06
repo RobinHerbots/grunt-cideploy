@@ -31,6 +31,7 @@ grunt.initConfig({
              after: function (grunt, options) { },
              origin: "",
              notifyInSharePoint: false,
+             removeTagAfterDeploy: false,
              username: grunt.option("username"),
              password: grunt.option("password"),
              Project_x0020_NameId: 1,
@@ -131,6 +132,11 @@ This is needed to allow the gitlabrunner to commit changes to gitlab.
 Default: false
 
 Notify the publish in SharePoint.
+
+#### removeTagAfterDeploy
+Default: false
+
+Delete the tag after deployment..
 
 #### username
 Default: grunt.option("username")
