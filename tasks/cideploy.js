@@ -25,11 +25,14 @@ function spawnTasks(grunt) {
 	}
 }
 
-function reconfigureSpawnTasks(grunt) {
+function reconfigureSpawnTasks(grunt, options) {
 	if (grunt.config.data.ci_deploy && grunt.config.data.ci_deploy.options.msbuild !== null) {
 		_.merge(grunt.config.data, {
 			msbuild: grunt.config.data.ci_deploy.options.msbuild
 		});
+		if (options !== undefined) {
+			_.merge(options, grunt.config.data.ci_deploy.options);
+		}
 	}
 }
 
@@ -78,7 +81,7 @@ module.exports = function (grunt) {
 			grunt.option("totag", tag);
 
 			options.before(grunt, options);
-			reconfigureSpawnTasks(grunt);
+			reconfigureSpawnTasks(grunt, options);
 			grunt.task.run(options.buildtasks);
 
 			options.after(grunt, options);
