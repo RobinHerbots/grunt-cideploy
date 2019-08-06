@@ -134,7 +134,7 @@ module.exports = function (grunt) {
 				});
 				grunt.task.run("gittag:priv");
 			}
-			if (options.notifyInSharePoint && grunt.option("profile") === "Production") {
+			if (options.notifyInSharePoint) {
 				grunt.registerTask("PSP", "Publish release info on sharepoint", function () {
 					function generateReleaseInfo() {
 						var prefix = ">> ",
