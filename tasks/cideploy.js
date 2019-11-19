@@ -49,6 +49,9 @@ module.exports = function (grunt) {
 			testtasks: [],
 			after: function (grunt, options) {
 			},
+			obtainProfile: function (tag) {
+				return  tag.indexOf("Production") !== -1 ? "Production" : "Staging";
+			},
 			origin: "",
 			notifyInSharePoint: false,
 			removeTagAfterDeploy: false,
@@ -78,7 +81,7 @@ module.exports = function (grunt) {
 			});
 			grunt.task.run("gitcheckout:priv");
 
-			grunt.option("profile", tag.indexOf("Production") !== -1 ? "Production" : "Staging");
+			grunt.option("profile", options.obtainProfile(tag));
 			grunt.option("totag", tag);
 
 			options.before(grunt, options);

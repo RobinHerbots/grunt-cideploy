@@ -24,21 +24,12 @@ module.exports = function (grunt) {
 				pushTo: "origin"
 			}
 		},
-		jshint: {
-			all: [
-				"Gruntfile.js",
-				"tasks/*.js"
-			],
-			options: {
-				jshintrc: ".jshintrc"
-			}
-		},
 		// Before generating any new files, remove any previously-created files.
 		clean: {
 			tests: ["tmp"]
 		},
 		eslint: {
-			target: "**/*.js"
+			target: ["tasks/**/*.js"]
 		}
 	});
 

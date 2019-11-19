@@ -27,6 +27,9 @@ grunt.initConfig({
              buildtasks: ["nugetrestore", "msbuild"],
              testtasks: ["eslint"],
              after: function (grunt, options) { },
+             obtainProfile: function (tag) {
+             	return  tag.indexOf("Production") !== -1 ? "Production" : "Staging";
+             },
              origin: "",
              notifyInSharePoint: false,
              removeTagAfterDeploy: false,
@@ -115,6 +118,15 @@ In here you can start the apppool on IIS for example.
                         grunt.task.run("StartWebAppPool");
                     },
 ```
+#### obtainProfile
+Default: 
+ ```
+ function (tag) { 
+    return  tag.indexOf("Production") !== -1 ? "Production" : "Staging";
+ },
+```
+This callback is used to determine the publishprofile to use depending the incoming tag description.
+
 
 #### origin
 Default: ""
