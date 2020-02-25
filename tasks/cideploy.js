@@ -205,7 +205,7 @@ module.exports = function (grunt) {
 
 											// eslint-disable-next-line no-console
 											console.log(JSON.stringify(grunt.config("sharepoint_list")));
-											grunt.task.run("sharepoint_list");
+											grunt.task.run("sharepoint_list:priv");
 
 											_.merge(grunt.config.data, {
 												gitcheckout: {
