@@ -1,17 +1,12 @@
 {
-  "name": "grunt-cideploy",
-  "description": "Reynaers Deployment Task",
-  "version": "0.0.10",
-  "homepage": "",
-  "author": {
-    "name": "Robin Herbots"
-  },
+  "name": "@robinherbots/grunt-cideploy",
+  "description": "Deployment Task",
+  "version": "0.0.11",
+  "homepage": "https://github.com/RobinHerbots/grunt-cideploy#readme",
+  "author": "Robin Herbots",
   "repository": {
     "type": "git",
-    "url": "https://github.com/RobinHerbots/grunt-cideploy"
-  },
-  "bugs": {
-    "url": ""
+    "url": "git+https://github.com/RobinHerbots/grunt-cideploy.git"
   },
   "license": "MIT",
   "engines": {
@@ -21,11 +16,11 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "grunt": "^1.0.4",
-    "grunt-available-tasks": "git://github.com/RobinHerbots/grunt-available-tasks.git",
+    "eslint": "^6.8.0",
+    "grunt": "^1.1.0",
+    "@robinherbots/grunt-available-tasks": "^0.6.4",
     "grunt-bump": "^0.8.0",
-    "grunt-eslint": "^21.1.0",
+    "grunt-eslint": "^22.0.0",
     "load-grunt-tasks": "^5.1.0"
   },
   "dependencies": {
@@ -33,13 +28,17 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-git": "^1.0.14",
     "grunt-msbuild": "^1.1.1",
-    "grunt-nuget": "git://github.com/RobinHerbots/grunt-nuget.git",
+    "@robinherbots/grunt-nuget": "^0.3.2",
     "grunt-prompt": "^1.3.3",
     "grunt-sharepoint-list": "^1.0.4",
-    "grunt-webapppool": "^0.0.3",
+    "@robinherbots/grunt-webapppool": "^0.0.4",
     "lodash": "^4.17.15"
   },
   "keywords": [
     "gruntplugin"
-  ]
+  ],
+  "main": "Gruntfile.js",
+  "bugs": {
+    "url": "https://github.com/RobinHerbots/grunt-cideploy/issues"
+  }
 }
